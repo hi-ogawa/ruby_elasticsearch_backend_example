@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  ruby:
+    image: ruby:2.3
+    working_dir: /app
+    environment:
+      - RUBY_ENV=development
+      - BUNDLE_PATH=/bundle
+    volumes:
+      - ./:/app
+      - bundle_data:/bundle
+
+  elasticsearch:
+    image: elasticsearch:2.4.0
+    volumes:
+      - elasticsearch_v:/usr/share/elasticsearch/data
+
+volumes:
+  bundle_data:
+  elasticsearch_v:
